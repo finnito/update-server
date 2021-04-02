@@ -1,2 +1,3 @@
-# update-server
-A basic Bash script to help me regularly update my servers.
+# upgrade-server
+
+Three BASH scripts to help me upgrade my MacOS Laptop, Ubuntu Webserver and MailInABox installation.
