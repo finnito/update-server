@@ -26,3 +26,5 @@ echo -e "\e[32m apt purge -y $(dpkg -l | awk '/^rc/ { print $2 }') \e[0m"
 apt purge -y $(dpkg -l | awk '/^rc/ { print $2 }')
 echo -e "\n"
 
+echo -e "\e[32m do-release-upgrade \e[0m"
+do-release-upgrade
