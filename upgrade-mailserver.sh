@@ -22,7 +22,7 @@ echo -e "\e[32m apt clean \e[0m"
 apt clean
 echo -e "\n"
 
-echo -e "\e[32m apt purge -y $(dpkg -l | awk '/^rc/ { print $2 }') \e[0m"
+echo -e "\e[32m apt purge -y \e[0m"
 apt purge -y $(dpkg -l | awk '/^rc/ { print $2 }')
 echo -e "\n"
 
