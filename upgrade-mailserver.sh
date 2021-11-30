@@ -28,4 +28,13 @@ echo -e "\n"
 
 curl -s https://mailinabox.email/setup.sh | sudo bash
 
-reboot
+echo -e "\e[32m do-release-upgrade \e[0m"
+do-release-upgrade
+echo -e "\n"
+
+echo -n "Reboot? (y/n) "
+read yesno < /dev/tty
+
+if [ "$yesno" = "y" ];then
+    reboot
+fi
