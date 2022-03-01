@@ -49,9 +49,13 @@ echo -e "\e[32m7/8: do-release-upgrade \e[0m"
 do-release-upgrade
 echo -e "\n"
 
-echo -n "8/8: Reboot? (y/n) "
-read yesno < /dev/tty
+if [ -f /var/run/reboot-required ]; then
+    echo -n "8/8: Reboot? (y/n) "
+    read yesno < /dev/tty
 
-if [ "$yesno" = "y" ];then
-    reboot
+    if [ "$yesno" = "y" ];then
+        reboot
+    fi
+else
+    exho -n "8/8: No reboot required."
 fi
