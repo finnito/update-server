@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 # if not root, run as root
 if (( $EUID != 0 )); then
     sudo ~/upgrade-server/upgrade-webserver.sh
@@ -20,6 +22,16 @@ read yesno < /dev/tty
 if [ "$yesno" = "n" ];then
     exit 1
 fi
+
+pip cache purge
+sudo -u www-data pip cache purge
+sudo -u finn pip cache purge
+
+composer clear-cache
+sudo -u finn composer clear-cache
+sudo -u www-data composer clear-cache
+
+journalctl --vacuum-time=7d
 
 echo -e "\e[32m1/7: apt update \e[0m"
 apt update
