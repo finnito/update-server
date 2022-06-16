@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
+
+set -euxo pipefail
 
 echo -e "\e[32mTODO:"
 echo -e " 1. brew update"
