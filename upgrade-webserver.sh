@@ -24,7 +24,6 @@ if [ "$yesno" = "n" ];then
 fi
 
 pip cache purge
-sudo -u www-data pip cache purge
 sudo -u finn pip cache purge
 
 composer clear-cache
