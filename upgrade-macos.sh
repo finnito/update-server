@@ -1,22 +1,20 @@
 #!/bin/zsh
 
-set -euxo pipefail
+# echo -e "\e[32mTODO:"
+# echo -e " 1. brew update"
+# echo -e " 2. brew outdated"
+# echo -e " 3. brew upgrade"
+# echo -e " 4. brew doctor"
+# echo -e " 5. brew cleanup"
+# echo -e " 6. brew doctor"
+# echo -e " 7. ?softwareupdate"
+# echo -e " 8. ?reboot\e[0m"
 
-echo -e "\e[32mTODO:"
-echo -e " 1. brew update"
-echo -e " 2. brew outdated"
-echo -e " 3. brew upgrade"
-echo -e " 4. brew doctor"
-echo -e " 5. brew cleanup"
-echo -e " 6. brew doctor"
-echo -e " 7. ?softwareupdate"
-echo -e " 8. ?reboot\e[0m"
-
-echo -n "Proceed? (y/n) "
-read yesno < /dev/tty
-if [ "$yesno" = "n" ];then
-    exit 1
-fi
+# echo -n "Proceed? (y/n) "
+# read yesno < /dev/tty
+# if [ "$yesno" = "n" ];then
+#     exit 1
+# fi
 
 echo -e "\n\e[32m1/8: brew update \e[0m"
 brew update
