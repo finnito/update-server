@@ -1,55 +1,52 @@
 #!/bin/zsh
 
-set -euxo pipefail
+set -eu
 
-echo -e "\e[32mTODO:"
+confirm()
+{
+    echo "\e[32m$*\e[0m"
+    read -k1 -s KEY
+    if [[ -z "$KEY" ]]
+    then
+        echo "Exiting"
+        exit
+    fi
+}
+
+
+echo -e "\e[32mTODO:\e[0m"
 echo -e " 1. brew update"
 echo -e " 2. brew outdated"
 echo -e " 3. brew upgrade"
 echo -e " 4. brew doctor"
 echo -e " 5. brew cleanup"
 echo -e " 6. brew doctor"
-echo -e " 7. ?softwareupdate"
-echo -e " 8. ?reboot\e[0m"
+echo -e " 7. brew autoremove"
+echo -e " 8. ?softwareupdate"
+echo -e " 9. ?reboot"
 
-echo -n "Proceed? (y/n) "
-read yesno < /dev/tty
-if [ "$yesno" = "n" ];then
-    exit 1
-fi
+confirm "\nPress ENTER to begin"
 
-echo -e "\n\e[32m1/8: brew update \e[0m"
+confirm "1/8: Press ENTER to 'brew update'"
 brew update
 
-echo -e "\n\e[32m2/8: brew outdated \e[0m"
+confirm "2/8: Press ENTER to 'brew outdated'"
 brew outdated
 
-echo -e "\n\e[32m3/8: brew upgrade \e[0m"
+confirm "3/8: Press ENTER to 'brew upgrade'"
 brew upgrade
 
-echo -e "\n\e[32m4/8: brew doctor \e[0m"
+confirm "4/8: Press ENTER to 'brew doctor'"
 brew doctor
 
-echo -e "\n\e[32m5/8: brew cleanup \e[0m"
+confirm "5/8: Press ENTER to 'brew cleanup'"
 brew cleanup
 
-echo -e "\n\e[32m6/8: brew doctor \e[0m"
-brew doctor
+confirm "6/8: Press ENTER to 'brew autoremove'"
+brew autoremove
 
-echo -e "\n\e[32m7/8: sudo softwareupdate --list \e[0m"
+confirm "7/8: Press ENTER to check for softwareupdate"
 sudo softwareupdate --list
 
-echo -n "\nPerform System Update (y/n) "
-read yesno < /dev/tty
-
-if [ "$yesno" = "y" ];then
-    echo -e "\n\e[32msudo softwareupdate -ia \e[0m"
-    sudo softwareupdate --install --all --force
-fi
-
-echo -n "\n8/8 Reboot? (y/n) "
-read yesno < /dev/tty
-
-if [ "$yesno" = "y" ];then
-    reboot
-fi
+confirm "8/8: Press ENTER to reboot"
+reboot
